@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<link type="text/css" rel="stylesheet" href="/static/css/login.css" />
+<script type="text/javascript" src="/static/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript"
+	src="/static/xheditor/xheditor-1.2.1.min.js"></script>
+<script type="text/javascript"
+	src="/static/xheditor/xheditor_lang/zh-cn.js"></script>
+</head>
+<body>
+	<div class="blog">
+		<div id="header">
+			<div id="branding">
+				<h1 id="site-name">文章添加</h1>
+			</div>
+		</div>
+		<div id="blogcontent">
+			<span class="sucess">{{msg}}</span>
+			<form action="." method="post">
+				{% csrf_token %}
+				<div class="form-row">
+					<label>标 题:</label>{% if form.errors %}<span class="error">{{form.errors.title.as_text}}</span>
+					{% endif %} <br /> {{form.title }} {{form.top}}置顶
+				</div>
+				<div class="form-row">
+					<label>正 文:</label> {% if form.errors %}<span class="error">{{form.errors.note.as_text}}</span>
+					{% endif %} <br /> {{form.note }}
+				</div>
+
+				<div class="form-row">
+					<label>tags:(多个tag之间用,分隔)</label> <br /> {{form.tag }}
+				</div>
+
+				<div class="submit-row">
+					<label>&nbsp;</label><input type="submit" value="提 交" />
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+<script>
+	$('#id_note').xheditor({
+		width : '800',
+		height : '400',
+		upImgUrl : "upload",
+		upImgExt : "jpg,jpeg,gif,png"
+	});
+</script>
+</html>

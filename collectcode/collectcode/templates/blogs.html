@@ -1,0 +1,22 @@
+﻿{%extends 'base.html'%}
+{%block title%}
+{{tag}}
+{%endblock%}
+{%block content%}
+
+<h3>{{tag}}</h3>
+
+{%for blog in bloglist%}
+<a href="/blog/{{blog.id}}" class="title">{%if blog.top%}[置顶]{%endif%}{{blog.title}}</a>
+<hr/>
+<div class="blog">
+{{blog.note|safe|truncatewords_html:50}}
+</div>
+<h4>recent update {{blog.last_time|date:'Y-m-d H:i:s'}}
+{%for t in taglist%}{%if blog.id == t.blogs_id%} <a href="/tags/{{t.tag}}" {%if t.tag == tag%}class="search"{%endif%}>{{t.tag}}</a>{%endif%}{%endfor%}
+views({{blog.views}}) comments({{blog.comments}})
+</h4>
+{%empty%}
+ <li>Sorry, no blogs in this list.</li>
+{%endfor%}
+{%endblock%}

@@ -1,0 +1,76 @@
+﻿{%extends 'base.html'%}
+{%block script_css%}
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushCSharp.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="/static/syntaxhighlighter/styles/shCoreDefault.css"/>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+{%endblock%}
+
+{%block title%}
+syntax high lighter demo
+{%endblock%}
+{%block content%}
+
+<div id="shopname">11</div>
+
+<a href="http://my.oschina.net/junn/blog/149627" target="_blank">----more----</a>
+<a href="http://alexgorbatchev.com/SyntaxHighlighter/manual/configuration/" target="_blank">--configuration--</a>
+<pre class="brush: js;">
+/**
+   * SyntaxHighlighter
+   */
+function helloSyntaxHighlighter()
+{
+	return "你好";
+	//it works!
+}
+
+</pre>
+<pre class="brush:py;">
+import re, random, time, os, datetime as dt
+from django.http import HttpResponse
+from django.utils import simplejson
+from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
+def hello():
+	return 'Hello'
+</pre>
+<pre class="brush:csharp;">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+public override void Process(string param)
+{//你好
+	//do something
+}
+</pre>
+
+<pre class="brush:css;">
+.syntaxhighlighter table td.gutter .line {
+  text-align: right !important;
+  padding: 0 0.5em 0 1em !important;
+}
+.syntaxhighlighter table td.code .line {
+  padding: 0 1em !important;
+}
+</pre>
+
+<pre class="brush:sql;">
+select * from tablename with(nolock)
+where columnname ="1"
+</pre>
+
+<pre class="brush:html;">
+<form>
+<input type="text" /><input type="button" />
+</form>
+</pre>
+{%endblock%}

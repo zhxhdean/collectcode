@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+{%block script_css%}
+<link type="text/css" rel="stylesheet" href="/static/css/login.css" />
+<script type="text/javascript" src="/static/js/h.js"></script>
+{%endblock%}
+
+{%block title%}
+	{{blog.title}}
+{%endblock%}
+
+{#正文#}
+{%block content%}
+<h5><a href="/">首页</a> > <a href="/blogs/">文章</a></h5><h3>{{blog.title}}</h3>
+	{%autoescape off%}
+	{{blog.note}}
+	{%endautoescape%}
+{%for c in list%}
+<dd>
+<du>{{c.email}} posted on {{c.last_time}}</du>
+<dt>{{c.comment|safe}}</dt>
+</dd>
+{%endfor%}
+<hr/>
+<b>发布点评:</b><br/>
+{%csrf_token%}
+*email:<span class="error" id="email_error"></span><br/>{{form.email}} <br/>
+*comment:<span class="error" id="comment_error"></span><br/>{{form.comment}}<br/>
+<input type="hidden" name="blogid" value="{{blog.id}}"/>
+<input type="hidden" name="next" value="/blog/{{blog.id}}"/>
+<input type="submit" value="post comment" id="post_comment"/>
+{%endblock%}

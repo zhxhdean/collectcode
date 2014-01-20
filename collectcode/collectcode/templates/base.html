@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<link type="text/css" rel="stylesheet" href="/static/css/base.css" />
+<script type="text/javascript" src="/static/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushCSharp.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="/static/syntaxhighlighter/styles/shCoreDefault.css"/>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+{%block script_css%}{%endblock%}
+<title>{%block title%}{%endblock%}-collectcode</title>
+</head>
+<body>
+	<div id="main">
+		<header>		
+			<div id="logo">
+				<h1>Barney's blog</h1>
+			</div>
+			<nav>
+				<ul class="lavaLampWithImage" id="lava_menu">
+					<li class="current"><a href="/">home</a></li>
+					<li><a href="/blogs">blogs</a></li>
+					<li><a href="/about">about me</a></li>
+					<li><a href="/contact">contact</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div id="site_content">
+
+			<div id="sidebar_container">
+				<div class="sidebar">
+					<h5>Tags</h5>
+					<div class="tag">
+					{%autoescape off%}
+						{{tagsls}}
+						{%endautoescape%}
+					</div>
+				</div>
+				<div class="sidebar">
+					<h5>Recent Comments</h5>
+					{%for c in clist%}
+					<h4>
+						<a href="/blog/{{c.blog_id}}">{{c.comment}}</a></h4>
+					{%endfor%}
+				</div>
+			</div>
+			<div id="content">{%block content%}{%endblock%}</div>
+		</div>
+		<footer>
+			<p>{%if user%}站长在此!{%endif%} Copyright&copy; 2014-{%now "Y"%} <a href="http://www.collectcode.me">collectcode.me</a> All Rights
+				Reserved</p>
+		</footer>
+	</div>
+</body>
+</html>
