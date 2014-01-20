@@ -1,16 +1,18 @@
 ﻿{%extends 'base.html'%}
 {%block title%}Welcome to CollectCode!{%endblock%}
+
+{%load base_filter%}
 {%block content%}
 
 {%for blog in bloglist%}
 <a href="/blog/{{blog.id}}" class="title">{%if blog.top%}[置顶]{%endif%}{{blog.title}}</a>
 <hr/>
 <div class="blog">
-{{blog.note|safe|truncatewords_html:50 }}
+{{blog.note|remove_html_tags|safe|truncatewords_html:50 }}
 </div>
 <h4>recent {{blog.last_time|date:'Y-m-d H:i:s'}}
-{%for tag in taglist%}{%if blog.id == tag.blogs_id%}<a href="/tags/{{tag.tag}}">{{tag.tag}}</a>{%endif%}{%endfor%}
-views({{blog.views}}) comments({{blog.comments}}){%if user%} <a href="/admin/blog/{{blog.id}}/">编辑</a>{%endif%}
+{%for tag in taglist%}{%if blog.id == tag.blogs_id%} <a href="/tags/{{tag.tag}}">{{tag.tag}}</a>{%endif%}{%endfor%}
+views({{blog.views}}) comments({{blog.comments}}){%if user%} <a href="/admin/blog/{{blog.id}}/">编辑</a> <a href="/admin/blog/delete/{{blog.id}}/" onclick="if (confirm('确定删除?')){ return true;}else{return false;}">删除</a> {%endif%}
 </h4>
 {%endfor%}
 {%endblock%}

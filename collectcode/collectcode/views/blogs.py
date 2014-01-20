@@ -7,10 +7,17 @@ from django.conf import settings
 from collectcode.models import blogs,comments ,message,tags as tagsModel
 from collectcode.views import tags
 
+PAGE_SIZE = 10
+
 #list
-def all(request):
-    bloglist = blogs.Blogs.objects.all().order_by('-top')[0:5]
-    taglist = tagsModel.Tags.objects.raw("select a.id, a.tag,b.blogs_id from tags a join blogs_tags b on a.id = b.tags_id;")
+def list_page(request,page = 1):
+    bloglist = blogs.Blogs.objects.all().order_by('-top')[PAGE_SIZE * (int(page)-1):PAGE_SIZE]
+    blogs_ids = ','.join([str(i.id) for i in bloglist])
+    #id不是从用户输入获取,拼接sql安全性还行
+    taglist = tagsModel.Tags.objects.raw("select a.id, a.tag,b.blogs_id from tags a \
+                                            join blogs_tags b \
+                                            on a.id = b.tags_id \
+                                            where b.blogs_id in (%s);" %blogs_ids)
     return render(request, 'index.html', {'bloglist':bloglist,'taglist':taglist})
 
 
@@ -21,9 +28,9 @@ def detail(request,id):
         blog = blogs.Blogs.objects.get(id=id)
         blog.views = blog.views + 1
         blog.save()
-        list = comments.Comments.objects.filter(blog_id=id)
+        ls = comments.Comments.objects.filter(blog_id=id)
         form = comments.CommentsForm()
-        return render(request,'blog.html',{'blog':blog,'list':list,'form':form})
+        return render(request,'blog.html',{'blog':blog,'list':ls,'form':form})
     except blogs.Blogs.DoesNotExist:
         return redirect('/')
     except:
@@ -63,7 +70,9 @@ def add(request):
 
 #edit blog
 def edit(request,id):
-    if request.method == 'POST':
+    if settings.SESSION_KEY not in request.session:
+        return redirect('/admin/login')
+    if request.method == 'POST':        
         form = blogs.BlogsForm(request.POST)
         if form.is_valid():
             title = form.cleaned_data['title']
@@ -91,13 +100,23 @@ def edit(request,id):
     else:
         try:
             d = blogs.Blogs.objects.get(id=id)
-            tags_ls = tagsModel.Tags.objects.raw('select t.id,t.tag from tags t join blogs_tags b on t.id = b.tags_id where b.blogs_id =%s;',[id])
+            tags_ls = tagsModel.Tags.objects.raw('select t.id,t.tag from tags t join blogs_tags b on t.id = b.tags_id where b.blogs_id = %s;',[id])
             form = blogs.BlogsForm(initial={'title':d.title,'note':d.note,'top':d.top,'tag':','.join([str(_t.tag) for _t in tags_ls])})
             return render(request,'edit_blog.html',{'form':form})
         except blogs.Blogs.DoesNotExist:
             return redirect('/')
 
-
+#delete blog
+def delete(request,id):
+    if settings.SESSION_KEY not in request.session:
+        return redirect('/admin/login')
+    try:
+        d = blogs.Blogs.objects.get(id=id)
+        d.delete()
+        return redirect(request.META['HTTP_REFERER'])
+    except blogs.Blogs.DoesNotExist:
+            return redirect('/')
+    
 def add_comments(request):
     json ={}
     if request.method == 'POST':        

@@ -1,5 +1,16 @@
 {%extends 'base.html'%}
 {%block script_css%}
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushCSharp.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="/static/syntaxhighlighter/styles/shCoreDefault.css"/>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
 <link type="text/css" rel="stylesheet" href="/static/css/login.css" />
 <script type="text/javascript" src="/static/js/h.js"></script>
 {%endblock%}

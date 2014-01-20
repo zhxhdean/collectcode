@@ -11,6 +11,7 @@ encoding//collectcode/templates/blogs.html=UTF-8
 encoding//collectcode/templates/demo.html=UTF-8
 encoding//collectcode/templates/index.html=UTF-8
 encoding//collectcode/templates/login.html=UTF-8
+encoding//collectcode/templatetags/base_filter.py=UTF-8
 encoding//collectcode/urls.py=UTF-8
 encoding//collectcode/views/blogs.py=UTF-8
 encoding//collectcode/views/index.py=UTF-8
