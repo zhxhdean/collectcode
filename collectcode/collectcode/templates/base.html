@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <link type="text/css" rel="stylesheet" href="/static/css/base.css" />
+<link type="text/css" rel="stylesheet" href="/static/css/calendar.css" />
 <script type="text/javascript" src="/static/js/jquery-1.4.4.min.js"></script>
-
+<script type="text/javascript" src="/static/js/calendar.js"></script>
 {%block script_css%}{%endblock%}
 <title>{%block title%}{%endblock%}-collectcode</title>
 </head>
@@ -26,6 +27,29 @@
 		<div id="site_content">
 
 			<div id="sidebar_container">
+			<div class="sidebar">
+			<div id="cal">
+				<div id="top">公元
+				<select>
+				</select>
+				年
+				<select>
+				</select>
+				月
+				</div>
+				<ul id="wk">
+				<li>一</li>
+				<li>二</li>
+				<li>三</li>
+				<li>四</li>
+				<li>五</li>
+				<li><b>六</b></li>
+				<li><b>日</b></li>
+				</ul>
+				<div id="cm"></div>
+				<div id="bm"></div>
+				</div>
+			</div>
 				<div class="sidebar">
 					<h5>Tags</h5>
 					<div class="tag">

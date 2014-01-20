@@ -8,6 +8,7 @@ from django.conf import settings
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'collectcode.views.index.home', name='home'),
+    url(r'^calendar$','collectcode.views.index.calendar'),
     url(r'^demo$', 'collectcode.views.blogs.demo'),
     url(r'^admin/login/$', 'collectcode.views.user.login'),
     url(r'^admin/blog/$', 'collectcode.views.blogs.add'),

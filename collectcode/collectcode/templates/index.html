@@ -4,8 +4,8 @@
 {%load base_filter%}
 {%block content%}
 
-{%for blog in bloglist%}
-<a href="/blog/{{blog.id}}" class="title">{%if blog.top%}[置顶]{%endif%}{{blog.title}}</a>
+{%for blog in bloglist%}<h3>
+<a href="/blog/{{blog.id}}" class="title">{%if blog.top%}[置顶]{%endif%}{{blog.title}}</a></h3>
 <hr/>
 <div class="blog">
 {{blog.note|remove_html_tags|safe|truncatewords_html:50 }}

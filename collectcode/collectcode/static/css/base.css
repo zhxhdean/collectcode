@@ -52,6 +52,8 @@ h2 {
 
 h3 { 
   font: normal 125% 'trebuchet ms', arial, sans-serif;
+  margin-bottom:5px;
+  padding-bottom:0px
 }
 
 h4, h5, h6 { 

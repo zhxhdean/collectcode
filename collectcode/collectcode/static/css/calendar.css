@@ -1,0 +1,17 @@
+body,td,.p1,.p2,.i{font-family:arial}
+body{margin:6px 0 0 0;background-color:#fff;color:#000;}
+table{border:0}
+#cal{width:220px;border:1px solid #c3d9ff;font-size:12px;}
+#cal #top{height:29px;line-height:29px;background:#e7eef8;color:#003784;padding-left:20px}
+#cal #top select{font-size:12px}
+#cal #top input{padding:0}
+#cal ul#wk{margin:0;padding:0;height:25px}
+#cal ul#wk li{padding:0;background:none;float:left;width:30px;text-align:center;line-height:25px;list-style:none}
+#cal ul#wk li b{font-weight:normal;color:#c60b02}
+#cal #cm{clear:left;border-top:1px solid #ddd;border-bottom:1px dotted #ddd;position:relative}
+#cal #cm .cell{position:absolute;width:30px;height:36px;text-align:center;margin:0 0 0 0}
+#cal #cm .cell .so{font:bold 16px arial;}
+#cal #bm{text-align:right;height:4px;line-height:4px;padding:0 13px 0 0}
+#cal #bm a{color:7977ce}
+#cal #fd{display:none;position:absolute;border:1px solid #dddddf;background:#feffcd;padding:10px;line-height:21px;width:150px}
+#cal #fd b{font-weight:normal;color:#c60a00}

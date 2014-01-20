@@ -27,3 +27,7 @@ def base(request):
     #comments 
     clist = comments.Comments.objects.all().order_by('-last_time')[0:5]    
     return {'tagsls' : ''.join(ls),'user':user_info,'clist':clist}
+
+
+def calendar(request):
+    return render(request,'calendar.html')
