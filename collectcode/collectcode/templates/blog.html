@@ -1,5 +1,9 @@
-{%extends 'base.html'%}
-{%block script_css%}
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<link type="text/css" rel="stylesheet" href="/static/css/base.css" />
+<script type="text/javascript" src="/static/js/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="/static/syntaxhighlighter/scripts/shCore.js"></script>
 <script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushJScript.js"></script>
 <script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushPython.js"></script>
@@ -13,14 +17,26 @@ SyntaxHighlighter.all();
 </script>
 <link type="text/css" rel="stylesheet" href="/static/css/login.css" />
 <script type="text/javascript" src="/static/js/h.js"></script>
-{%endblock%}
 
-{%block title%}
-	{{blog.title}}
-{%endblock%}
+<title>{{blog.title}}-collectcode</title>
+</head>
+<body>
+	<div id="main">
+		<header>		
+			<div id="logo">
+				<h1>Barney's blog</h1>
+			</div>
+			<nav>
+				<ul class="lavaLampWithImage" id="lava_menu">
+					<li class="current"><a href="/">home</a></li>
+					<li><a href="/blogs">blogs</a></li>
+					<li><a href="/about">about me</a></li>
+					<li><a href="/contact">contact</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div id="site_content">
 
-{#正文#}
-{%block content%}
 <h5><a href="/">首页</a> > <a href="/blogs/">文章</a></h5><h3>{{blog.title}}</h3>
 	{%autoescape off%}
 	{{blog.note}}
@@ -39,4 +55,12 @@ SyntaxHighlighter.all();
 <input type="hidden" name="blogid" value="{{blog.id}}"/>
 <input type="hidden" name="next" value="/blog/{{blog.id}}"/>
 <input type="submit" value="post comment" id="post_comment"/>
-{%endblock%}
+
+</div>
+		<footer>
+			<p>{%if user%}站长在此!{%endif%} Copyright&copy; 2014-{%now "Y"%} <a href="http://www.collectcode.me">collectcode.me</a> All Rights
+				Reserved</p>
+		</footer>
+	</div>
+</body>
+</html>

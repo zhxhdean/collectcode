@@ -53,5 +53,6 @@ def update(tag):
         blog_num = t.blog_num - 1
         if blog_num <= 0:
             blog_num = 0
-        t.save(blog_num = blog_num)
+        t.blog_num = blog_num
+        t.save()
     
