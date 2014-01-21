@@ -1,4 +1,6 @@
 #-*-coding:utf8-*-
+
+
 SUCCESS = u'操作成功!'
 
 NOVALUE_USER = u'用户名不能空'

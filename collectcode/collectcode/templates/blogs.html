@@ -1,6 +1,6 @@
 ﻿{%extends 'base.html'%}
 {%block title%}
-{{tag}}
+{{tag}}blogs
 {%endblock%}
 {%block content%}
 {%load base_filter%}
@@ -19,4 +19,20 @@ views({{blog.views}}) comments({{blog.comments}}) {%if user%} <a href="/admin/bl
 {%empty%}
  <li>Sorry, no blogs in this list.</li>
 {%endfor%}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if pages.has_previous %}
+            <a href="/blogs/{{ pages.previous_page_num }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ pages.current_num }} of {{ pages.total_page }}.
+        </span>
+
+        {% if pages.has_next %}
+            <a href="/blogs/{{ pages.next_page_num }}">next</a>
+        {% endif %}
+    </span>
+</div>
 {%endblock%}

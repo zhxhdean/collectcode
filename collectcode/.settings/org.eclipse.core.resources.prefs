@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
+encoding//collectcode/__init__.py=UTF-8
+encoding//collectcode/models/__init__.py=UTF-8
 encoding//collectcode/models/blogs.py=UTF-8
 encoding//collectcode/models/blogs_tags.py=UTF-8
 encoding//collectcode/models/comments.py=UTF-8
@@ -16,7 +18,9 @@ encoding//collectcode/templates/index.html=UTF-8
 encoding//collectcode/templates/login.html=UTF-8
 encoding//collectcode/templatetags/base_filter.py=UTF-8
 encoding//collectcode/urls.py=UTF-8
+encoding//collectcode/views/__init__.py=UTF-8
 encoding//collectcode/views/blogs.py=UTF-8
 encoding//collectcode/views/index.py=UTF-8
+encoding//collectcode/views/pager.py=UTF-8
 encoding//collectcode/views/tags.py=UTF-8
 encoding//collectcode/views/user.py=UTF-8

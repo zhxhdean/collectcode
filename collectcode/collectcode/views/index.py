@@ -5,7 +5,7 @@ from django.conf import settings
 from collectcode.models import blogs,tags,user,comments
 
 def home(request):
-    bloglist = blogs.Blogs.objects.all().order_by('-top')[0:5]
+    bloglist = blogs.Blogs.objects.all().order_by('-top','-id')[0:5]
     taglist = tags.Tags.objects.raw("select a.id, a.tag,b.blogs_id from tags a join blogs_tags b on a.id = b.tags_id;")
     return render(request, 'index.html', {'bloglist':bloglist,'taglist':taglist})
 

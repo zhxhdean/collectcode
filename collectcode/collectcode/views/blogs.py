@@ -4,21 +4,25 @@ from django.shortcuts import render,redirect
 from django.forms.util import ErrorList
 from django.utils import simplejson
 from django.conf import settings
-from collectcode.models import blogs,comments ,message,tags as tagsModel
-from collectcode.views import tags
+from collectcode.models import blogs,comments,blogs_tags ,message,tags as tagsModel
+from collectcode.views import tags,pager
 
 PAGE_SIZE = 10
 
 #list
 def list_page(request,page = 1):
-    bloglist = blogs.Blogs.objects.all().order_by('-top')[PAGE_SIZE * (int(page)-1):PAGE_SIZE]
+    page = int(page)
+    bloglist = blogs.Blogs.objects.all().order_by('-top')[PAGE_SIZE * (page-1):PAGE_SIZE*page]
+    total = blogs.Blogs.objects.all().count()
+    p = pager.Pager(total,page,PAGE_SIZE)
+    pages = p.show()
     blogs_ids = ','.join([str(i.id) for i in bloglist])
     #id不是从用户输入获取,拼接sql安全性还行
     taglist = tagsModel.Tags.objects.raw("select a.id, a.tag,b.blogs_id from tags a \
                                             join blogs_tags b \
                                             on a.id = b.tags_id \
                                             where b.blogs_id in (%s);" %blogs_ids)
-    return render(request, 'index.html', {'bloglist':bloglist,'taglist':taglist})
+    return render(request, 'blogs.html', {'bloglist':bloglist,'taglist':taglist,'pages':pages})
 
 
 
@@ -111,8 +115,12 @@ def delete(request,id):
     if settings.SESSION_KEY not in request.session:
         return redirect('/admin/login')
     try:
-        d = blogs.Blogs.objects.get(id=id)
+        d = blogs.Blogs.objects.get(id = id)
         d.delete()
+        tag_ls = blogs_tags.Blogs_tags.objects.filter(blogs_id = id)
+        for t in tag_ls:
+            tags.update_id(t.tags_id)
+            tags.delete_blogs_tags_id(t.id)
         return redirect(request.META['HTTP_REFERER'])
     except blogs.Blogs.DoesNotExist:
             return redirect('/')

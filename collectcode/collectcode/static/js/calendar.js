@@ -141,7 +141,7 @@ this.showInLunar=this.jieqi=L[(this.solarMonth-1)*2]
 } if(c(this.solarYear,(this.solarMonth-1)*2+1)==f(Y,"d")){
 this.showInLunar=this.jieqi=L[(this.solarMonth-1)*2+1]
 } if(this.showInLunar=="清明"){
-this.showInLunar="清明节";
+this.showInLunar="清明";
 this.restDays=1
 } this.solarFestival=V[f(Y,"MM")+f(Y,"dd")];
 if(typeof this.solarFestival=="undefined"){
