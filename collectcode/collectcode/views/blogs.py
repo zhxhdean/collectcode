@@ -12,7 +12,7 @@ PAGE_SIZE = 10
 #list
 def list_page(request,page = 1):
     page = int(page)
-    bloglist = blogs.Blogs.objects.all().order_by('-top')[PAGE_SIZE * (page-1):PAGE_SIZE*page]
+    bloglist = blogs.Blogs.objects.all().order_by('-top','-id')[PAGE_SIZE * (page-1):PAGE_SIZE*page]
     total = blogs.Blogs.objects.all().count()
     p = pager.Pager(total,page,PAGE_SIZE)
     pages = p.show()

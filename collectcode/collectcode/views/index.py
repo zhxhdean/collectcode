@@ -16,7 +16,10 @@ def base(request):
     min_num = int(tagslist.aggregate(Min('blog_num'))['blog_num__min'])
     ls = []
     for t in tagslist:
-        ls.append('<a href="/tags/%s" title="topic %s" style="font-size:%spt">%s</a>' % (t.tag,t.blog_num,(8+14.0*t.blog_num/(max_num-min_num)),t.tag))
+        if t.tag == 'c#':
+            ls.append('<a href="/tags/%s" title="topic %s" style="font-size:%spt">%s</a>' % ('c%23',t.blog_num,(8+14.0*t.blog_num/(max_num-min_num)),t.tag))
+        else:
+            ls.append('<a href="/tags/%s" title="topic %s" style="font-size:%spt">%s</a>' % (t.tag,t.blog_num,(8+14.0*t.blog_num/(max_num-min_num)),t.tag))
     
     #用户
     user_info = None

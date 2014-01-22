@@ -1,14 +1,28 @@
 #-*-coding:utf8-*-
 from django.shortcuts import render
 from collectcode.models import blogs,blogs_tags,tags
+import pager
 
-def search(request,tag):
-    bloglist = blogs.Blogs.objects.raw('select a.id,a.title,a.note from blogs a \
+
+PAGE_SIZE = 10
+def search(request,tag,page =1):
+    page = int(page)
+    all_list = blogs.Blogs.objects.raw('select count(1) as id from blogs a \
                                          join blogs_tags b on a.id = b.blogs_id \
                                          join tags c on c.id = b.tags_id \
                                          where c.tag=%s order by a.top desc', [tag])
-    taglist = tags.Tags.objects.raw("select a.id, a.tag,b.blogs_id from tags a join blogs_tags b on a.id = b.tags_id;")
-    return render(request,'blogs.html',{'bloglist':bloglist,'searchtags':True,'tag':tag,'taglist':taglist})
+    total = int(''.join([str(e.id) for e in all_list]))
+    p = pager.Pager(total,page,PAGE_SIZE)
+    pages = p.show()
+    
+    bloglist = blogs.Blogs.objects.raw('select a.id,a.title,a.note from blogs a \
+                                         join blogs_tags b on a.id = b.blogs_id \
+                                         join tags c on c.id = b.tags_id \
+                                         where c.tag=%s order by a.top desc', [tag])[PAGE_SIZE * (page-1):PAGE_SIZE*page]
+    taglist = tags.Tags.objects.raw("select a.id, a.tag,b.blogs_id from tags a\
+     join blogs_tags b on a.id = b.tags_id \
+     where b.blogs_id in (%s);" %','.join([str(i.id) for i in bloglist]))
+    return render(request,'tags.html',{'bloglist':bloglist,'tag':tag,'pages':pages,'taglist':taglist})
 
 #是否存在tag,返回tag
 def exist(tag):

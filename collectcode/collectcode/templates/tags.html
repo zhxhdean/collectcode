@@ -1,6 +1,6 @@
-﻿{%extends 'base.html'%}
+{%extends 'base.html'%}
 {%block title%}
-blogs
+{{tag}}
 {%endblock%}
 {%block content%}
 {%load base_filter%}
@@ -13,7 +13,7 @@ blogs
 {{blog.note|remove_html_tags|safe|truncatewords_html:50}}
 </div>
 <h4>recent update {{blog.last_time|date:'Y-m-d H:i:s'}}
-{%for t in taglist%}{%if blog.id == t.blogs_id%} <a href="/tags/{{t.tag}}">{{t.tag}}</a>{%endif%}{%endfor%}
+{%for t in taglist%}{%if blog.id == t.blogs_id%} <a href="/tags/{{t.tag}}" {%if t.tag == tag%}class="search"{%endif%}>{{t.tag}}</a>{%endif%}{%endfor%}
 views({{blog.views}}) comments({{blog.comments}}) {%if user%} <a href="/admin/blog/{{blog.id}}/">编辑</a> <a href="/admin/blog/delete/{{blog.id}}/" onclick="if (confirm('确定删除?')){ return true;}else{return false;}">删除</a> {%endif%}
 </h4>
 {%empty%}
@@ -23,7 +23,7 @@ views({{blog.views}}) comments({{blog.comments}}) {%if user%} <a href="/admin/bl
 <div class="pagination">
     <span class="step-links">
         {% if pages.has_previous %}
-            <a href="/blogs/{{ pages.previous_page_num }}">previous</a>
+            <a href="/tags/{{tag}}/{{ pages.previous_page_num }}">previous</a>
         {% endif %}
 
         <span class="current">
@@ -31,7 +31,7 @@ views({{blog.views}}) comments({{blog.comments}}) {%if user%} <a href="/admin/bl
         </span>
 
         {% if pages.has_next %}
-            <a href="/blogs/{{ pages.next_page_num }}">next</a>
+            <a href="/tags/{{tag}}/{{ pages.next_page_num }}">next</a>
         {% endif %}
     </span>
 </div>
