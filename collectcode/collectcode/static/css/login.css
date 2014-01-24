@@ -131,6 +131,44 @@ body.login {
 	width: 500px;
 }
 
+.emailtext {
+	width: 200px;
+}
+
+.bx {
+	font-size: 14px;
+	margin: 5px 0px;
+	display: block
+}
+
+dl {
+	font-size: 14px;
+}
+
+dl a {
+	color: blue
+}
+
+dt {
+	padding: 10px 0px
+}
+
+dd {
+	line-height: 1.5em
+}
+
+.tags_blog {
+	padding: 10px 5px;
+	margin-bottom: 0;
+	margin-top: 10px;
+	border: silver 1px dashed;
+	font-size: 9pt;
+}
+
+#site_content_blog {
+	font-size: 14px
+}
+
 .sucess {
 	color: #f00;
 	font-size: 16px

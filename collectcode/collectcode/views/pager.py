@@ -25,7 +25,7 @@ class Pager():
     
     def show(self):
         self.total_page = (self.total+self.page_size -1)/self.page_size
-        if self.total_page == 1:
+        if self.total_page <= 1:
             return self
         if self.current_num == 1:
             self.has_next = True

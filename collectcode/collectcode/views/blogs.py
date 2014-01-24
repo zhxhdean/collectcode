@@ -33,8 +33,9 @@ def detail(request,id):
         blog.views = blog.views + 1
         blog.save()
         ls = comments.Comments.objects.filter(blog_id=id)
+        tags_ls = tagsModel.Tags.objects.raw('select t.id,t.tag from tags t join blogs_tags b on t.id = b.tags_id where b.blogs_id = %s;',[id])
         form = comments.CommentsForm()
-        return render(request,'blog.html',{'blog':blog,'list':ls,'form':form})
+        return render(request,'blog.html',{'blog':blog,'list':ls,'form':form,'tags_ls':tags_ls})
     except blogs.Blogs.DoesNotExist:
         return redirect('/')
     except:
@@ -130,17 +131,24 @@ def add_comments(request):
     if request.method == 'POST':        
         form = comments.CommentsForm(request.POST)
         try:
-            if form.is_valid():  
-                blog_id = int(request.POST['blogid'])          
-                email = form.cleaned_data['email']
-                comment = form.cleaned_data['comment']               
-                try:
-                    c = comments.Comments(email=email,comment=comment,blog_id=blog_id)
-                    c.save()
-                    json['msg'] = message.SUCCESS
-                    json['error'] =u'0'
-                except:
-                    json['msg'] = message.PROGRAM_EXCEPTION
+            if form.is_valid():
+                try:                    
+                    blog_id = int(request.POST['blogid'])
+                    b = blogs.Blogs.objects.get(id=blog_id)
+                    email = form.cleaned_data['email']
+                    comment = form.cleaned_data['comment']
+                    try:
+                        c = comments.Comments(email=email,comment=comment,blog_id=blog_id)                    
+                        c.save()
+                        b.comments = b.comments + 1
+                        b.save()               
+                        json['msg'] = message.SUCCESS
+                        json['error'] =u'0'
+                    except:
+                        json['msg'] = message.PROGRAM_EXCEPTION
+                        json['error'] =u'1'
+                except blogs.Blogs.DoesNotExist:
+                    json['msg'] = message.INVALID_REQUEST 
                     json['error'] =u'1'
             else:
                 err ={}

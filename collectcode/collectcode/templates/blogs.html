@@ -6,8 +6,8 @@ blogs
 {%load base_filter%}
 <h3>{{tag}}</h3>
 
-{%for blog in bloglist%}
-<a href="/blog/{{blog.id}}" class="title">{%if blog.top%}[置顶]{%endif%}{{blog.title}}</a>
+{%for blog in bloglist%}<h3>
+<a href="/blog/{{blog.id}}" class="title">{%if blog.top%}[置顶]{%endif%}{{blog.title}}</a></h3>
 <hr/>
 <div class="blog">
 {{blog.note|remove_html_tags|safe|truncatewords_html:50}}

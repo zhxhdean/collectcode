@@ -35,20 +35,26 @@ SyntaxHighlighter.all();
 				</ul>
 			</nav>
 		</header>
-		<div id="site_content">
-
-<h5><a href="/">首页</a> > <a href="/blogs/">文章</a></h5><h3>{{blog.title}}</h3>
+<div id="site_content_blog">
+<h3><a href="/">首页</a> > <a href="/blogs/">文章</a></h3>
+<h1>{{blog.title}}</h1>
 	{%autoescape off%}
 	{{blog.note}}
 	{%endautoescape%}
+	
+<div class="tags_blog">tags:{%for t in tags_ls%}<a href="/tags/{{t.tag}}">{{t.tag}}</a> {%endfor%}
+&nbsp;&nbsp;views:{{blog.views}}&nbsp;&nbsp;comments:{{blog.comments}}
+</div>	
 {%for c in list%}
-<dd>
-<du>{{c.email}} posted on {{c.last_time}}</du>
-<dt>{{c.comment|safe}}</dt>
-</dd>
-{%endfor%}
+<b class="bx">评论</b>
 <hr/>
-<b>发布点评:</b><br/>
+<dl>
+<dt>{{forloop.counter}}楼 {{c.email}} posted on {{c.last_time|date:'Y-m-d H:i:s'}}</dt>
+<dd>{{c.comment|safe}} <a href="javascript:void(0)" onclick="reply_comment('{{c.email}}')">回复</a></dd>
+</dl>
+{%endfor%}
+
+<b class="bx">发表评论:</b>
 {%csrf_token%}
 *email:<span class="error" id="email_error"></span><br/>{{form.email}} <br/>
 *comment:<span class="error" id="comment_error"></span><br/>{{form.comment}}<br/>
