@@ -8,7 +8,9 @@
 <a href="/blog/{{blog.id}}" class="title">{%if blog.top%}[置顶]{%endif%}{{blog.title}}</a></h3>
 <hr/>
 <div class="blog">
-{{blog.note|remove_html_tags|safe|truncatewords_html:50 }}
+{{blog.note|remove_html_tags|safe|truncatewords_html_remove_end:"50,"}}
+<a href="/blog/{{blog.id}}">See More...</a>
+
 </div>
 <h4>recent {{blog.last_time|date:'Y-m-d H:i:s'}}
 {%for tag in taglist%}{%if blog.id == tag.blogs_id%} <a href="/tags/{{tag.tag}}">{{tag.tag}}</a>{%endif%}{%endfor%}

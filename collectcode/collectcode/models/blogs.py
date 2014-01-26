@@ -1,7 +1,7 @@
 #-*-coding:utf8-*-
 from django.db import models
 from django import forms
-import message
+import messages
 class Blogs(models.Model):
     class Meta:
         db_table = 'blogs'
@@ -16,7 +16,7 @@ class Blogs(models.Model):
     top = models.BooleanField(default=0)
     
 class BlogsForm(forms.Form):
-    title = forms.CharField(widget=forms.TextInput(attrs={'class':'blogtext'}),max_length=100,error_messages={'required':message.NOVALUE_TITLE})
-    note = forms.CharField(widget=forms.Textarea,error_messages={'required':message.NOVALUE_NOTE})
+    title = forms.CharField(widget=forms.TextInput(attrs={'class':'blogtext'}),max_length=100,error_messages={'required':messages.NOVALUE_TITLE})
+    note = forms.CharField(widget=forms.Textarea,error_messages={'required':messages.NOVALUE_NOTE})
     top = forms.BooleanField(widget=forms.CheckboxInput,required=False)
     tag = forms.CharField(required=False,widget=forms.TextInput(attrs={'class':'blogtext'}))

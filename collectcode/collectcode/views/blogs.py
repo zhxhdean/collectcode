@@ -4,8 +4,8 @@ from django.shortcuts import render,redirect
 from django.forms.util import ErrorList
 from django.utils import simplejson
 from django.conf import settings
-from collectcode.models import blogs,comments,blogs_tags ,message,tags as tagsModel
-from collectcode.views import tags,pager
+from collectcode.models import blogs,comments,blogs_tags ,messages,tags as tagsModel
+from collectcode.views import tags,pager,user
 
 PAGE_SIZE = 10
 
@@ -47,9 +47,8 @@ def demo(request):
 
 
 #add new blog
+@user.logined
 def add(request):
-    if settings.SESSION_KEY not in request.session:
-        return redirect('/admin/login')
     if request.method == 'POST':
         form = blogs.BlogsForm(request.POST)
         if form.is_valid():
@@ -66,7 +65,7 @@ def add(request):
                 tag_d = tags.save(t, 1)                
                 tags.save_blogs_tags(b.id,tag_d.id)
             form = blogs.BlogsForm()
-            return render(request,'add_blog.html',{'msg':message.SUCCESS,'form':form})
+            return render(request,'add_blog.html',{'msg':messages.SUCCESS,'form':form})
         else:
             return render(request,'add_blog.html',{'form':form})
     else:
@@ -74,16 +73,18 @@ def add(request):
         return render(request,'add_blog.html',{'form':form})
 
 #edit blog
+@user.logined
 def edit(request,id):
-    if settings.SESSION_KEY not in request.session:
-        return redirect('/admin/login')
     if request.method == 'POST':        
         form = blogs.BlogsForm(request.POST)
         if form.is_valid():
             title = form.cleaned_data['title']
             top = form.cleaned_data['top']
             note = form.cleaned_data['note']
-            b = blogs.Blogs(id=int(id),title=title,top=top,note=note)
+            b = blogs.Blogs.objects.all().get(id=int(id))
+            b.title = title
+            b.top = top
+            b.note = note
             b.save()
             tag = form.cleaned_data['tag']
             old_tag = request.POST['hd_tag']
@@ -99,7 +100,7 @@ def edit(request,id):
             for t in u_tag:                
                 tags.update(t)
                 tags.delete_blogs_tags(id, t)            
-            return render(request,'edit_blog.html',{'msg':message.SUCCESS,'form':form})
+            return render(request,'edit_blog.html',{'msg':messages.SUCCESS,'form':form})
         else:
             return render(request,'edit_blog.html',{'form':form})
     else:
@@ -112,9 +113,8 @@ def edit(request,id):
             return redirect('/')
 
 #delete blog
+@user.logined
 def delete(request,id):
-    if settings.SESSION_KEY not in request.session:
-        return redirect('/admin/login')
     try:
         d = blogs.Blogs.objects.get(id = id)
         d.delete()
@@ -142,13 +142,13 @@ def add_comments(request):
                         c.save()
                         b.comments = b.comments + 1
                         b.save()               
-                        json['msg'] = message.SUCCESS
+                        json['msg'] = messages.SUCCESS
                         json['error'] =u'0'
                     except:
-                        json['msg'] = message.PROGRAM_EXCEPTION
+                        json['msg'] = messages.PROGRAM_EXCEPTION
                         json['error'] =u'1'
                 except blogs.Blogs.DoesNotExist:
-                    json['msg'] = message.INVALID_REQUEST 
+                    json['msg'] = messages.INVALID_REQUEST 
                     json['error'] =u'1'
             else:
                 err ={}
@@ -159,10 +159,10 @@ def add_comments(request):
                 json['error'] =u'1'
                 json['msg'] = err
         except Exception:
-            json['msg'] = message.PROGRAM_EXCEPTION 
+            json['msg'] = messages.PROGRAM_EXCEPTION 
             json['error'] =u'1'
     else:
-        json['msg'] = message.INVALID_REQUEST
+        json['msg'] = messages.INVALID_REQUEST
         json['error'] =u'1'
     return HttpResponse(simplejson.dumps(json, ensure_ascii=False),content_type='application/json')
     

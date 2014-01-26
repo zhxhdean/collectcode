@@ -415,9 +415,11 @@ nav {
 
 .title{font-size:16px;text-decoration:none;}
 .title:hover{color:#f90;}
-.blog{padding:10px 0px;text-indent: 2em;font-size:14px;font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;}
+.blog{line-height:1.5em; padding:10px 0px;text-indent: 2em;font-size:14px;font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;}
+.blog a{color:#f90}.blog a:hover{color:#000}
 .tag{margin:5px 0px;font-size:8pt}
 .tag a{line-height:30px;margin-right:5px;float:left;}.tag a:hover{color:#f90}
+
 .maxtag{font-size:22pt;}
 .search{color:#f00}
 footer p{font-size:14px}

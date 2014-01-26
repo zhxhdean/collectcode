@@ -15,7 +15,11 @@ PROGRAM_EXCEPTION = u'程序异常'
 
 MIN_LENGTH_5 = u'字符长度最少5'
 
+MAX_LENGTH_10 = u'字符长度不能超过10'
+
 MAX_LENGTH_20 = u'字符长度不能超过20'
+
+MAX_LENGTH_30 = u'字符长度不能超过30'
 
 MAX_LENGTH_250 = u'字符长度不能超过250'
 
@@ -30,4 +34,10 @@ NOVALUE_EMAIL = u'email不能空'
 INVALID_EMAIL = u'email格式不正确'
 
 NOVALUE_COMMENT = u'留言不能空'
+
+NOVALUE_URL = u'link地址不能为空'
+
+NOVALUE_TEXT = u'不能为空'
+
+INVALID_URL = u'url格式不正确'
 

@@ -39,3 +39,11 @@ id int(4)primary key auto_increment,
 name varchar(20)unique not null,
 passwd varchar(32) not null
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+create table link(
+id tinyint(1) primary key auto_increment,
+url varchar(30) not null,
+text nvarchar(10) not null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
