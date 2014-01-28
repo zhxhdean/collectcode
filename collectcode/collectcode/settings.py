@@ -26,6 +26,11 @@ DATABASES = {
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []
 
+
+ALLOW_SUFFIX = ['.jpg', '.jpeg', '.png', '.gif']
+
+# max 2M
+UPLOAD_MAX_SIZE = 2
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
@@ -51,7 +56,10 @@ USE_TZ = False
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = os.path.join(os.path.dirname(__file__),'upload').replace('\\','/')
+
+
+MEDIA_PICTURES_DIR = 'pictures'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.

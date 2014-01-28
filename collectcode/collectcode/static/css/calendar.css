@@ -1,6 +1,4 @@
-body,td,.p1,.p2,.i{font-family:arial}
-body{margin:6px 0 0 0;background-color:#fff;color:#000;}
-table{border:0}
+
 #cal{width:220px;border:1px solid #ccc;font-size:12px;}
 #cal #top{height:29px;line-height:29px;background:#ddd;color:#000;padding-left:20px}
 #cal #top select{font-size:12px}

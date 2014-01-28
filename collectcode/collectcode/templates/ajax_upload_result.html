@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JustBoil's Result Page</title>
+</head>
+<body>
+Result:{{result}}
+<script language="javascript" type="text/javascript">
+window.parent.window.jbImagesDialog.uploadFinish({
+		filename:'{{file_name}}',
+		result: '{{result}}',
+		resultCode: '{{resultCode|default:"failed"}}'
+	});
+</script>
+</body>
+</html>

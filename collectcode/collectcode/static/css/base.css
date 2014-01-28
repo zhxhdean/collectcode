@@ -21,8 +21,8 @@ body {
 }
 
 p { 
-  font: normal 1.3em , arial, sans-serif;
-  padding: 10px 0 10px 0;
+  font: normal 1.3em arial, sans-serif;
+  padding: 5px 0 5px 0;
   line-height: 1.5em;
   text-shadow: #FFF 1px 1px ;
 }
@@ -32,7 +32,7 @@ img {
 }
 
 h1, h2, h3, h4, h5, h6 { 
-  font: normal 400% 宋体, arial, sans-serif;
+  font: normal 420% arial, sans-serif;
   color: #222;
   margin: 0 0 15px 0;
   padding: 15px 0 5px 0;
@@ -43,7 +43,7 @@ h1 {
 }
 
 h2 { 
-  font: normal 280% 宋体, arial, sans-serif;
+  font: normal 280% arial, sans-serif;
   color: #222;  
   margin: 0;
   padding: 0 0 8px 0;
@@ -51,7 +51,7 @@ h2 {
 }
 
 h3 { 
-  font: normal 125% 'trebuchet ms', arial, sans-serif;
+  font: normal 125% 'trebuchet ms'arial, sans-serif;
   margin-bottom:5px;
   padding-bottom:0px
 }
@@ -90,14 +90,14 @@ ul {
 }
 
 ul li { 
-  font: normal 1.3em , arial, sans-serif;
+  font: normal 1.3em arial, sans-serif;
   list-style-type: circle;
   margin: 0 0 0 0; 
   padding: 0 0 4px 5px;
 }
 
 ol { 
-  margin: 8px 0 22px 20px;
+  margin: 8px 0 8px 20px;
 }
 
 ol li { 
@@ -146,7 +146,7 @@ header {
 }
 
 #logo h1 { 
-  font: normal 440% 宋体, arial, sans-serif;
+
   padding: 60px 0 0 0;
   color: #222;
   letter-spacing: -2px;
@@ -186,7 +186,7 @@ header {
   
 .sidebar h3 { 
   padding: 0 15px 0px 0;
-  font: 400% 宋体, arial, sans-serif;
+  font: 400% arial, sans-serif;
   text-shadow:  #FFF 1px 1px;
   margin: 0 1px;
   color: #222;
@@ -266,7 +266,7 @@ footer a:hover {
 }
   
 .form_settings .submit { 
-  font: 140% , arial, sans-serif; 
+  font: 140% arial, sans-serif; 
   border: 0; 
   width: 100px; 
   margin: 0 0 0 162px; 
@@ -283,7 +283,7 @@ footer a:hover {
 }
 
 .form_settings textarea, .form_settings select { 
-  font: 100% 'trebuchet ms', arial, sans-serif; 
+  font: 100% 'trebuchet ms'arial, sans-serif; 
   border: 1px solid #666; 
   border-radius: 6px 6px 6px 6px;
   -webkit-border-radius: 6px 6px 6px 6px;
@@ -358,7 +358,7 @@ ul img {
  
 #slideshow-caption p {
   padding: 0;
-  font: normal 100% , arial, sans-serif;
+  font: normal 100% arial, sans-serif;
   color: #000;}
 
 nav { 
@@ -409,6 +409,41 @@ nav {
   margin: auto 16px;    
 }
 
+.tags_blog {
+	padding: 10px 5px;
+	margin-bottom: 0;
+	margin-top: 10px;
+	border: silver 1px dashed;
+	font-size: 9pt;
+}
+
+#site_content_blog {
+	padding:20px 0 0 0;
+	font-size: 14px;
+	clear:both;
+}
+
+#site_content_blog h1{font-size:16pt;margin:0}
+
+#site_content_blog div a{color:blue}
+#site_content_blog p a{color:blue}
+.sucess {
+	color: #f00;
+	font-size: 16px
+}
+
+.emailtext .linktext {
+	width: 200px;
+}
+
+.bx {
+	font-size: 14px;
+	margin: 5px 0px;
+	display: block
+}
+.error {
+	color: #f00
+}
 .lavaLampWithImage li a:hover, .lavaLampWithImage li a:active, .lavaLampWithImage li a:visited {
   border: none;
 }

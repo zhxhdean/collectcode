@@ -4,10 +4,43 @@
 <meta charset="UTF-8">
 <link type="text/css" rel="stylesheet" href="/static/css/login.css" />
 <script type="text/javascript" src="/static/js/jquery-1.4.4.min.js"></script>
-<script type="text/javascript"
-	src="/static/xheditor/xheditor-1.2.1.min.js"></script>
-<script type="text/javascript"
-	src="/static/xheditor/xheditor_lang/zh-cn.js"></script>
+<script type="text/javascript" src="/static/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+tinymce.init({
+	selector: 'textarea',
+	width: 900,
+	height: 500,
+	language : 'zh_CN',
+	fontsize_formats: "8pt 10pt 12pt 14pt 16pt 18pt 20pt 22pt 24pt 32pt 36pt",
+	font_formats: "宋体=宋体;微软雅黑=微软雅黑;"+
+	"Andale Mono=andale mono,times;"+
+    "Arial=arial,helvetica,sans-serif;"+
+    "Arial Black=arial black,avant garde;"+
+    "Book Antiqua=book antiqua,palatino;"+
+    "Comic Sans MS=comic sans ms,sans-serif;"+
+    "Courier New=courier new,courier;"+
+    "Georgia=georgia,palatino;"+
+    "Helvetica=helvetica;"+
+    "Impact=impact,chicago;"+
+    "Symbol=symbol;"+
+    "Tahoma=tahoma,arial,helvetica,sans-serif;"+
+    "Terminal=terminal,monaco;"+
+    "Times New Roman=times new roman,times;"+
+    "Trebuchet MS=trebuchet ms,geneva;"+
+    "Verdana=verdana,geneva;"+
+    "Webdings=webdings;"+
+    "Wingdings=wingdings,zapf dingbats",
+    plugins: [
+             "advlist autolink lists link image charmap print preview anchor",
+             " searchreplace visualblocks code fullscreen",
+             " insertdatetime media table contextmenu paste textcolor emoticons jbimages"
+         ],
+     	toolbar1: "insertfile undo redo | bold italic | "+
+    	"alignleft aligncenter alignright alignjustify | styleselect | formatselect fontselect fontsizeselect | forecolor backcolor emoticons",
+    	toolbar2: " bullist numlist outdent indent | link image | searchreplace | print media | preview | jbimages",
+    	relative_urls: false
+})
+</script>
 </head>
 <body>
 	<div class="blog">
@@ -43,12 +76,5 @@
 		</div>
 	</div>
 </body>
-<script>
-	$('#id_note').xheditor({
-		width : '800',
-		height : '400',
-		upImgUrl : "upload",
-		upImgExt : "jpg,jpeg,gif,png"
-	});
-</script>
+
 </html>

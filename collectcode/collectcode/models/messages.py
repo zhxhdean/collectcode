@@ -1,5 +1,5 @@
 #-*-coding:utf8-*-
-
+from django.conf import settings
 
 SUCCESS = u'操作成功!'
 
@@ -40,4 +40,8 @@ NOVALUE_URL = u'link地址不能为空'
 NOVALUE_TEXT = u'不能为空'
 
 INVALID_URL = u'url格式不正确'
+
+INVALID_SUFFIX = u'上传图片格式不正确,只支持%s' %''.join(settings.ALLOW_SUFFIX)
+
+UPLOAD_MAX_SIZE = u'上传文件超出最大限制,%sM' %settings.UPLOAD_MAX_SIZE
 

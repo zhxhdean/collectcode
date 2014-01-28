@@ -8,7 +8,10 @@ from django.conf import settings
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'collectcode.views.index.home', name='home'),
-    url(r'^calendar$','collectcode.views.index.calendar'),
+    url(r'^upload/$','collectcode.views.upload.upload_image'),
+    url(r'^ajaxupload/$','collectcode.views.tinymce.ajax_upload'),
+    url(r'^calendar/$','collectcode.views.index.calendar'),
+    url(r'^tinymce/$','collectcode.views.tinymce.home'),
     url(r'^logout/$','collectcode.views.user.logout'),
     url(r'^demo$', 'collectcode.views.blogs.demo'),
     url(r'^admin/login/$', 'collectcode.views.user.login'),
@@ -23,6 +26,8 @@ urlpatterns = patterns('',
     url(r'^tags/(?P<tag>.*)/$','collectcode.views.tags.search'),
     url(r'^static/(?P<path>.*)$','django.views.static.serve',  
         {'document_root': settings.STATIC_ROOT}),
+    url(r'^upload/(?P<path>.*)$','django.views.static.serve',  
+        {'document_root': settings.MEDIA_ROOT}),
     # url(r'^collectcode/', include('collectcode.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

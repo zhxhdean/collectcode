@@ -15,7 +15,7 @@
 <script type="text/javascript">
 SyntaxHighlighter.all();
 </script>
-<link type="text/css" rel="stylesheet" href="/static/css/login.css" />
+
 <script type="text/javascript" src="/static/js/h.js"></script>
 
 <title>{{blog.title}}-collectcode</title>
@@ -30,14 +30,14 @@ SyntaxHighlighter.all();
 				<ul class="lavaLampWithImage" id="lava_menu">
 					<li class="current"><a href="/">home</a></li>
 					<li><a href="/blogs">blogs</a></li>
-					<li><a href="/about">about me</a></li>
-					<li><a href="/contact">contact</a></li>
+					<li><a href="#">about me</a></li>
+					<li><a href="#">contact</a></li>
 				</ul>
 			</nav>
 		</header>
 <div id="site_content_blog">
-<h3><a href="/">首页</a> > <a href="/blogs/">文章</a></h3>
 <h1>{{blog.title}}</h1>
+<hr/>
 	{%autoescape off%}
 	{{blog.note}}
 	{%endautoescape%}
