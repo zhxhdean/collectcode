@@ -281,12 +281,13 @@ if(c[a].isToday){
 X.style.border="1px solid #a5b9da";
 X.style.background="#c1d9ff"
 } X.className="cell";
-X.style.left=(a%7)*30+"px";
+X.style.left=(a%7)*30+5+"px";
 X.style.top=Math.floor(a/7)*38+2+"px";
 var b=R("DIV");
 b.className="so";
 // http://www.codefans.net
-b.style.color=((a%7)>4||c[a].isRest)?"#c60b02":"#313131";
+//b.style.color=((a%7)>4||c[a].isRest)?"#c60b02":"#313131";
+b.style.color=((a%7)>4)?"#f00":"#313131";
 b.innerHTML=c[a].solarDate;
 X.appendChild(b);
 var Y=R("DIV");

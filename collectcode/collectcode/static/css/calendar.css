@@ -1,11 +1,11 @@
 
 #cal{width:220px;border:1px solid #ccc;font-size:12px;}
-#cal #top{height:29px;line-height:29px;background:#ddd;color:#000;padding-left:20px}
+#cal #top{height:29px;line-height:29px;background:#ddd;color:#000;padding-left:30px}
 #cal #top select{font-size:12px}
 #cal #top input{padding:0}
-#cal ul#wk{margin:0;padding:0;height:25px}
+#cal ul#wk{margin:0;padding-left:6px;height:25px}
 #cal ul#wk li{padding:0;background:none;float:left;width:30px;text-align:center;line-height:25px;list-style:none}
-#cal ul#wk li b{font-weight:normal;color:#c60b02}
+#cal ul#wk li b{font-weight:normal;color:#f00}
 #cal #cm{clear:left;border-top:1px solid #ddd;border-bottom:1px dotted #ddd;position:relative}
 #cal #cm .cell{position:absolute;width:30px;height:36px;text-align:center;margin:0 0 0 0}
 #cal #cm .cell .so{font:bold 16px arial;}

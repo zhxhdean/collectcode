@@ -9,6 +9,7 @@ encoding//collectcode/models/tags.py=UTF-8
 encoding//collectcode/models/user.py=UTF-8
 encoding//collectcode/static/js/calendar.js=UTF-8
 encoding//collectcode/static/js/h.js=UTF-8
+encoding//collectcode/static/js/xttop.js=UTF-8
 encoding//collectcode/static/tinymce/upload_plugin.js=UTF-8
 encoding//collectcode/templates/base.html=UTF-8
 encoding//collectcode/templates/blog.html=UTF-8

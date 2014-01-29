@@ -12,8 +12,10 @@
 <script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushSql.js"></script>
 <script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushXml.js"></script>
 <link type="text/css" rel="stylesheet" href="/static/syntaxhighlighter/styles/shCoreDefault.css"/>
+<script type="text/javascript" src="/static/js/xttop.js"></script>
 <script type="text/javascript">
 SyntaxHighlighter.all();
+
 </script>
 
 <script type="text/javascript" src="/static/js/h.js"></script>
@@ -44,16 +46,15 @@ SyntaxHighlighter.all();
 	
 <div class="tags_blog">tags:{%for t in tags_ls%}<a href="/tags/{{t.tag}}">{{t.tag}}</a> {%endfor%}
 &nbsp;&nbsp;views:{{blog.views}}&nbsp;&nbsp;comments:{{blog.comments}}
-</div>	
-{%for c in list%}
-<b class="bx">评论</b>
+</div>
+<b class="bx" id="comment">评论</b>
 <hr/>
+{%for c in list%}
 <dl>
-<dt>{{forloop.counter}}楼 {{c.email}} posted on {{c.last_time|date:'Y-m-d H:i:s'}}</dt>
-<dd>{{c.comment|safe}} <a href="javascript:void(0)" onclick="reply_comment('{{c.email}}')">回复</a></dd>
+<dt>{{forloop.counter}}L  </dt>
+<dd>{{c.comment|safe}} posted on {{c.last_time|date:'H:i:s'}} <a href="javascript:void(0)" onclick="reply_comment('{{forloop.counter}}L')">回复</a></dd>
 </dl>
 {%endfor%}
-
 <b class="bx">发表评论:</b>
 {%csrf_token%}
 *email:<span class="error" id="email_error"></span><br/>{{form.email}} <br/>
@@ -63,10 +64,14 @@ SyntaxHighlighter.all();
 <input type="submit" value="post comment" id="post_comment"/>
 
 </div>
+
 		<footer>
 			<p>{%if user%}站长在此!{%endif%} Copyright&copy; 2014-{%now "Y"%} <a href="http://www.collectcode.me">collectcode.me</a> All Rights
 				Reserved</p>
 		</footer>
 	</div>
 </body>
+<script type="text/javascript">
+var mytop =new xttop({img:'http://www.elongstatic.com/hotels/pic/totop.gif',bottom:'100px',right:'0px',speed:80});
+</script>
 </html>

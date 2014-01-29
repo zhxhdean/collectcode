@@ -444,6 +444,22 @@ nav {
 .error {
 	color: #f00
 }
+
+dl {
+	font-size: 14px;
+}
+
+dl a {
+	color: blue
+}
+
+dt {
+	padding: 10px 0px
+}
+
+dd {
+	line-height: 1.5em
+}
 .lavaLampWithImage li a:hover, .lavaLampWithImage li a:active, .lavaLampWithImage li a:visited {
   border: none;
 }
@@ -458,3 +474,19 @@ nav {
 .maxtag{font-size:22pt;}
 .search{color:#f00}
 footer p{font-size:14px}
+#xttop{cursor:pointer;}
+#comments-link{margin-bottom:5px;}
+#comments-link a{
+text-decoration:none;
+display:block;
+background: #eee url(../images/comment-bubble.png) no-repeat;
+color: #1982d1;
+width: 43px;
+height: 36px;}
+
+#comments-link a:hover{
+	background-color: #1982d1;
+	color: #fff;
+	color: rgba(255,255,255,0.8);
+}
+.leave-reply{padding:8px 5px;display:block;font-weight:bold}
