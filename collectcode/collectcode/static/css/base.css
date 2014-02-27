@@ -414,7 +414,7 @@ nav {
 	margin-bottom: 0;
 	margin-top: 10px;
 	border: silver 1px dashed;
-	font-size: 9pt;
+	font-size: 11pt;
 }
 
 #site_content_blog {
@@ -425,7 +425,8 @@ nav {
 
 #site_content_blog h1{font-size:16pt;margin:0}
 
-#site_content_blog div a{color:blue}
+#site_content_blog div a{text-decoration: none;color:#f60}
+#site_content_blog div a:hover{color:#f90}
 #site_content_blog p a{color:blue}
 .sucess {
 	color: #f00;
@@ -437,29 +438,15 @@ nav {
 }
 
 .bx {
-	font-size: 14px;
-	margin: 5px 0px;
+	font-size: 16px;
+	margin: 10px;
 	display: block
 }
 .error {
 	color: #f00
 }
 
-dl {
-	font-size: 14px;
-}
 
-dl a {
-	color: blue
-}
-
-dt {
-	padding: 10px 0px
-}
-
-dd {
-	line-height: 1.5em
-}
 .lavaLampWithImage li a:hover, .lavaLampWithImage li a:active, .lavaLampWithImage li a:visited {
   border: none;
 }
@@ -470,6 +457,14 @@ dd {
 .blog a{color:#f90}.blog a:hover{color:#000}
 .tag{margin:5px 0px;font-size:8pt}
 .tag a{line-height:30px;margin-right:5px;float:left;}.tag a:hover{color:#f90}
+
+.button,input[type=submit],input[type=button],.submit-row input {
+	background: white url(/static/images/nav-bg.gif) bottom repeat-x;
+	padding: 10px 15px;
+	color: black;
+	border: 1px solid #bbb;
+	border-color: #ddd #aaa #aaa #ddd;
+}
 
 .maxtag{font-size:22pt;}
 .search{color:#f00}
@@ -490,3 +485,11 @@ height: 36px;}
 	color: rgba(255,255,255,0.8);
 }
 .leave-reply{padding:8px 5px;display:block;font-weight:bold}
+.emailtext{width:250px;background:#F7EFD6;height:22px;}
+textarea{background:#F7EFD6;}
+.comments{border:solid 1px #E8E7D0;width:950px;background:#fff;margin-bottom:10px}
+.auth{border-bottom:dashed 1px #E8E7D0;height:30px;line-height:30px;padding:5px 5px 5px 15px;}
+.auth a {float:right;margin-right:20px}
+.comment{padding: 10px 18px 10px 15px;min-height: 35px;}
+.pcomment{border:solid 1px #D1CDCD;padding:10px}
+.lb{height:26px;line-height:26px;padding-left:10px}

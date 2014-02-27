@@ -15,4 +15,4 @@ class CommentsForm(forms.Form):
     email = forms.EmailField(widget=forms.TextInput(attrs={'class':'emailtext'}),error_messages={'required':messages.NOVALUE_EMAIL,'invalid':messages.INVALID_EMAIL})
     comment = forms.CharField(min_length=5,max_length=250,error_messages={'required':messages.NOVALUE_COMMENT,'min_length':messages.MIN_LENGTH_5
                                                                           ,'max_length':messages.MAX_LENGTH_250},
-                              widget=forms.Textarea(attrs={'rows':5,'cols':90}))
+                              widget=forms.Textarea(attrs={'rows':15,'cols':90}))

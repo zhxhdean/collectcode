@@ -19,3 +19,9 @@ def truncatewords_html_remove_end(value,arg):
     except ValueError:
         return value
     return mark_safe(truncate_html_words(value,length,''))
+
+@register.filter
+def replace_start_words(value):
+    if len(value)>5:
+        return "*****"+value[5:]
+    return "*****"

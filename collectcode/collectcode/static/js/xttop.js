@@ -26,7 +26,7 @@
 
         //topdiv样式
 
-        div.innerHTML = '<div id="comments-link"><a href="#comment"  title="点评" class="comments"><span class="leave-reply">点评</span></a></div>'
+        div.innerHTML = '';// '<div id="comments-link"><a href="#comment"  title="点评" class="comments"><span class="leave-reply">点评</span></a></div>'
         	
 
         if (config["img"]) {

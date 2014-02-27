@@ -44,24 +44,31 @@ SyntaxHighlighter.all();
 	{{blog.note}}
 	{%endautoescape%}
 	
+{%load base_filter%}
 <div class="tags_blog">tags:{%for t in tags_ls%}<a href="/tags/{{t.tag}}">{{t.tag}}</a> {%endfor%}
 &nbsp;&nbsp;views:{{blog.views}}&nbsp;&nbsp;comments:{{blog.comments}}
 </div>
-<b class="bx" id="comment">评论</b>
-<hr/>
+<b class="bx" id="comment">评论列表</b>
 {%for c in list%}
-<dl>
-<dt>{{forloop.counter}}L  </dt>
-<dd>{{c.comment|safe}} posted on {{c.last_time|date:'H:i:s'}} <a href="javascript:void(0)" onclick="reply_comment('{{forloop.counter}}L')">回复</a></dd>
-</dl>
+<div class="comments">
+<div class="auth">{{forloop.counter}}L  {{c.email|replace_start_words}} posted on {{c.last_time|date:'Y-m-d H:i:s'}} <a href="javascript:void(0)" class="rp" onclick="reply_comment('{{forloop.counter}}L')">回复</a></div>
+<div class="comment">{{c.comment|safe}} 
+</div>
+</div>
 {%endfor%}
-<b class="bx">发表评论:</b>
+
+<div class="pcomment">
+<b class="bx">+发表评论</b>
 {%csrf_token%}
-*email:<span class="error" id="email_error"></span><br/>{{form.email}} <br/>
-*comment:<span class="error" id="comment_error"></span><br/>{{form.comment}}<br/>
+<div>
+<div class="lb">
+邮箱地址:</div><div>{{form.email}} <span class="error" id="email_error"></span></div>
+<div  class="lb">点评内容:</div><div>{{form.comment}}<span class="error" id="comment_error"></span></div>
+</div>
 <input type="hidden" name="blogid" value="{{blog.id}}"/>
 <input type="hidden" name="next" value="/blog/{{blog.id}}"/>
-<input type="submit" value="post comment" id="post_comment"/>
+<input type="submit" value="POST COMMENT" id="post_comment"/>
+</div>
 
 </div>
 

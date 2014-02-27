@@ -16,6 +16,7 @@ $(function(){
 				success:function(data){
 					if(data.error == '0'){
 						$('#email_error').text(data.msg);
+						setTimeout(function(){location.reload();},1000); 
 					}else{
 						$('#email_error').text(data.msg.e);
 						$('#comment_error').text(data.msg.c);
